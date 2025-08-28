@@ -1,8 +1,25 @@
+version: '3.8'
+
 services:
   app:
-    build: .
+    build: 
+      context: .
+      dockerfile: Dockerfile
     container_name: acme-app
     volumes:
       - .:/var/www/html
+      - vendor_data:/var/www/html/vendor
     working_dir: /var/www/html
-    command: tail -f /dev/null
+    command: >
+      sh -c "
+        if [ ! -f /var/www/html/vendor/composer/installed.json ]; then
+          echo 'Copying vendor from build...' &&
+          cp -r /tmp/vendor/* /var/www/html/vendor/ 2>/dev/null || composer install
+        fi &&
+        tail -f /dev/null
+      "
+    stdin_open: true
+    tty: true
+
+volumes:
+  vendor_data:
