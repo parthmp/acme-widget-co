@@ -1,0 +1,8 @@
+services:
+  app:
+    build: .
+    container_name: acme-app
+    volumes:
+      - .:/var/www/html
+    working_dir: /var/www/html
+    command: tail -f /dev/null
