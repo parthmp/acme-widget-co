@@ -18,7 +18,7 @@
 
 			$this->products_catalogue = array_map(
 				function (float $price){
-					$cents = (int) round($price * 100);
+					$cents = (int) round($price * 100); /* using cents to avoid 0.1 mismatch */
 					return $cents;
 				},
 				$products_catalogue
