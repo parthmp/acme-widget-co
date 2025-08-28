@@ -6,12 +6,24 @@
 
 	class SpecialOffer implements OfferInterface{
 		
+		/**
+		* @var string The item code the offer applies to.
+		*/
 		private string $item_code;
 
+		/**
+		* Constructor
+		*
+		* @param string $item_code The item code for which the special offer applies.
+		*/
 		public function __construct(string $item_code){
 			$this->item_code = $item_code;
 		}
 
+		/**
+		* @param list<array<string,int>> $items
+		* @return list<array<string,int>>
+		*/
 		public function applyOffer(array $items):array{
 			$found_count = 0;
 
