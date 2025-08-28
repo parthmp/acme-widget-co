@@ -10,8 +10,7 @@
 		private array $offers = [];
 
 		private array $added_items = [];
-		private float $discount = 0;
-		
+
 		public function __construct(array $products_catalogue, DeliveryChargeInterface $delivery_charge, OfferInterface $offer){
 
 			$this->products_catalogue = array_map(
