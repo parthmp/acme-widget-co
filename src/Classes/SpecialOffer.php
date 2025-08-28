@@ -24,7 +24,7 @@
 					}
 
 					if($found_count === 2){
-						$items[$index][$item_code] =  ($item_price/2);
+						$items[$index][$item_code] =  intdiv($item_price, 2);
 						break;
 					}
 
