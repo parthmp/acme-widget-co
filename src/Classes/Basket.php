@@ -2,6 +2,9 @@
 
 	namespace App\Classes;
 
+	use App\Interfaces\DeliveryChargeInterface;
+	use App\Interfaces\OfferInterface;
+
 	class Basket{
 
 		private array $products_catalogue = [];
