@@ -6,6 +6,7 @@ use PHPUnit\Framework\TestCase;
 use \App\Classes\Basket;
 use \App\Classes\DeliveryCharge;
 use \App\Classes\SpecialOffer;
+use \App\Classes\BuyTwoThirdFreeOffer;
 
 class BasketTest extends TestCase{
 
@@ -56,6 +57,21 @@ class BasketTest extends TestCase{
         $basket->add('R01');
         
         $this->assertEquals(98.27, $basket->total());
+
+    }
+
+	public function test_buy_two_third_free_offer_test(){
+		
+        $basket = new Basket($this->products, new DeliveryCharge(), new SpecialOffer('R01'));
+
+		$basket->addOffer(new BuyTwoThirdFreeOffer());
+        $basket->add('B01');
+        $basket->add('B01');
+        $basket->add('R01');
+        $basket->add('R01');
+        $basket->add('R01');
+
+        $this->assertEquals(84.75, $basket->total());
 
     }
 }
